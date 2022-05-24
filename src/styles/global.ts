@@ -20,7 +20,6 @@ const GlobalStyles = createGlobalStyle`
 		box-sizing: border-box;
 	}
 
-
 	@media(max-width: 1080px) {
 		html {
 			font-size: 93.75%;
