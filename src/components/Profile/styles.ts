@@ -11,6 +11,10 @@ export const ProfileIMG = styled.img`
     border-radius: 50%;
 `
 
+export const ProfileLevelIMG = styled.img`
+    margin-right: 0.5rem;
+`
+
 export const ProfileInfo = styled.div`
     margin-left: 1.5rem;
 `
