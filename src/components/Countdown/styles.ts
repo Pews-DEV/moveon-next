@@ -39,3 +39,29 @@ export const CountdownTwoDots = styled.span`
 export const CountdownNubers = styled.span`
     flex: 1;
 `
+
+export const CountdownButton = styled.button`
+    width: 100%;
+    height: 5rem;
+
+    margin-top: 2rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    border: 0;
+    border-radius: 5px;
+
+    background: var(--blue);
+    color: var(--white);
+
+    font-size: 1.25rem;
+    font-wight: 600;
+
+    :hover{
+        background: var(--blue-dark);
+    }
+
+    transition: background-color 0.2s;
+`
