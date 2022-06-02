@@ -1,3 +1,4 @@
+import CompletedChallenges from "../../components/CompletedChallenges";
 import ExperienceBar from "../../components/ExperienceBar";
 import Profile from "../../components/Profile";
 import { Container, LeftContainer } from "../../styles/containers";
@@ -9,6 +10,7 @@ const HomeScreen = () => (
       <LeftContainer>
         <div>
           <Profile />
+          <CompletedChallenges />
         </div>
         <div></div>
       </LeftContainer>
