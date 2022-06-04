@@ -2,9 +2,12 @@ import { useEffect, useState } from "react";
 
 import * as S from "./styles";
 
+let countdownTimeout: NodeJS.Timeout;
+
 const Countdown = () => {
-  const [time, setTime] = useState(22 * 60);
-  const [active, setActive] = useState(false);
+  const [time, setTime] = useState(0.1 * 60);
+  const [isActive, setIsActive] = useState(false);
+  const [hasFinished, setHasFinished] = useState(false);
 
   const minutes = Math.floor(time / 60);
   const seconds = time % 60;
@@ -13,39 +16,71 @@ const Countdown = () => {
   const [secondLeft, secondRight] = String(seconds).padStart(2, "0").split("");
 
   function startCountdown() {
-    setActive(!active);
+    setIsActive(true);
+  }
+
+  function resetCountdown() {
+    clearTimeout(countdownTimeout);
+    setIsActive(false);
+    setTime(0.1 * 60);
   }
 
   useEffect(() => {
-    if (active && time > 0) {
-      setTimeout(() => {
+    if (isActive && time > 0) {
+      countdownTimeout = setTimeout(() => {
         setTime(time - 1);
       }, 1000);
+    } else if (isActive && time == 0) {
+        setHasFinished(true);
+        setIsActive(false);
     }
-  }, [active, time]);
+  }, [isActive, time]);
 
   return (
     <div>
-      <S.CountdownContainer>
-        <S.CountdownCouter>
-          <S.CountdownNubers>{minuteLeft}</S.CountdownNubers>
-          <S.CountdownNubers>{minuteRight}</S.CountdownNubers>
-        </S.CountdownCouter>
-        <S.CountdownTwoDots>:</S.CountdownTwoDots>
-        <S.CountdownCouter>
-          <S.CountdownNubers>{secondLeft}</S.CountdownNubers>
-          <S.CountdownNubers>{secondRight}</S.CountdownNubers>
-        </S.CountdownCouter>
-      </S.CountdownContainer>
+      <S.CdContainer>
+        <S.CdCouter>
+          <S.CdNubers>{minuteLeft}</S.CdNubers>
+          <S.CdNubers>{minuteRight}</S.CdNubers>
+        </S.CdCouter>
+        <S.CdTwoDots>:</S.CdTwoDots>
+        <S.CdCouter>
+          <S.CdNubers>{secondLeft}</S.CdNubers>
+          <S.CdNubers>{secondRight}</S.CdNubers>
+        </S.CdCouter>
+      </S.CdContainer>
 
-      <S.CountdownButton
-        type="button"
-        onClick={() => {
-          startCountdown();
-        }}
-      >
-        Iniciar um ciclo
-      </S.CountdownButton>
+      { hasFinished ? (
+        <S.CdButton
+        disabled
+        >
+          Ciclo encerrado
+        </S.CdButton>
+      ) : (
+        <>
+          { isActive ? (
+          <S.CdBtnActive
+          type="button"
+          onClick={() => {
+            resetCountdown();
+          }}
+          >
+            Abandonar um ciclo
+          </S.CdBtnActive>
+          ) : (
+            <S.CdButton
+            type="button"
+            onClick={() => {
+              startCountdown();
+            }}
+            >
+              Iniciar um ciclo
+            </S.CdButton>
+          )}
+        </>
+      )}
+
+      
     </div>
   );
 };

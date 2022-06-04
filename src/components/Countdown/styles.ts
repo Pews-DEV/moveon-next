@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const CountdownContainer = styled.div`
+export const CdContainer = styled.div`
     display: flex;
     align-items: center;
     font-family: Rajdhani;
@@ -8,7 +8,7 @@ export const CountdownContainer = styled.div`
     color: var(--title);
 `
 
-export const CountdownCouter = styled.div`
+export const CdCouter = styled.div`
     flex: 1;
 
     display: flex;
@@ -31,16 +31,16 @@ export const CountdownCouter = styled.div`
     } 
 `
 
-export const CountdownTwoDots = styled.span`
+export const CdTwoDots = styled.span`
     font-size: 6.25rem;
     margin: 0 0.5rem;
 `
 
-export const CountdownNubers = styled.span`
+export const CdNubers = styled.span`
     flex: 1;
 `
 
-export const CountdownButton = styled.button`
+export const CdButton = styled.button`
     width: 100%;
     height: 5rem;
 
@@ -59,9 +59,25 @@ export const CountdownButton = styled.button`
     font-size: 1.25rem;
     font-wight: 600;
 
-    :hover{
+    :not(:disabled):hover{
         background: var(--blue-dark);
     }
 
     transition: background-color 0.2s;
+
+    :disabled{
+        background: var(--white);
+        color: var(--text);
+        cursor: not-allowed;
+    }
+`
+
+export const CdBtnActive = styled(CdButton)`
+    background: var(--white);
+    color: var(--title);
+
+    :not(:disabled):hover{
+        background: var(--red);
+        color: var(--white);
+    }
 `
