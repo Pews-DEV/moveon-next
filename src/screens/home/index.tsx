@@ -1,7 +1,9 @@
+import ChallengeBox from "../../components/ChallengeBox";
 import CompletedChallenges from "../../components/CompletedChallenges";
 import Countdown from "../../components/Countdown";
 import ExperienceBar from "../../components/ExperienceBar";
 import Profile from "../../components/Profile";
+
 import { Container, LeftContainer } from "../../styles/containers";
 
 const HomeScreen = () => (
@@ -14,7 +16,9 @@ const HomeScreen = () => (
           <CompletedChallenges />
           <Countdown />
         </div>
-        <div></div>
+        <div>
+          <ChallengeBox />
+        </div>
       </LeftContainer>
     </Container>
   )
